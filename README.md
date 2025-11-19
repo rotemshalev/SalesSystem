@@ -93,13 +93,6 @@ Both can be replaced with real implementations by uncommenting the HTTP client c
 ### Authentication & Rate Limiting
 Handled by API Gateway (NginX) as per system design. This service assumes pre-authenticated requests.
 
-## Non-Functional Requirements
-
-- **Reliability**: Error handling and logging throughout
-- **Scalability**: Stateless design enables horizontal scaling
-- **Idempotency**: Order IDs use UUIDs to prevent duplicates. Webhook idempotency can be added using request deduplication cache (planned for Delivery Intake layer per Task 1 design)
-- **Observability**: Structured logging for all operations
-
 ## Testing
 
 Basic unit tests included for the order service:
@@ -114,7 +107,3 @@ PORT=3000
 NODE_ENV=development
 LOG_LEVEL=info
 ```
-
-## License
-
-MIT
