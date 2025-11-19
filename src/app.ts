@@ -9,7 +9,7 @@ const app: Application = express();
 app.use(express.json());
 
 app.get("/health", (_req, res) => {
-  res.json({ status: "OK", service: "sales-system" });
+  res.json({ status: "OK" });
 });
 
 app.use("/api/orders", orderRoutes);
