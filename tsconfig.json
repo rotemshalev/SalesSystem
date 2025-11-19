@@ -18,7 +18,7 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "tests"],
   "exclude": ["node_modules", "dist", "tests"],
   "types": ["node", "jest"]
 }
