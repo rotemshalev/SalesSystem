@@ -1,6 +1,6 @@
 # Sales System - Order Processing Integration
 
-Node.js/TypeScript implementation of the Sales System for order processing integration between Sales and Delivery departments.
+Node.js/TypeScript implementation of the Sales System for order processing integration between Sales and Delivery.
 
 ## Project Structure
 ```
@@ -78,24 +78,16 @@ GET /health
 
 ## Design Decisions
 
-### Functional Programming
-Modern TypeScript approach with pure functions and exported functions instead of classes.
-
 ### In-Memory Storage
-Uses `Map` for data storage instead of a real database. Simple for the assignment scope and demonstrates the data access pattern. Can be easily swapped with PostgreSQL/MongoDB in production.
+Uses `Map` for data storage instead of a real database. Simple for the assignment scope and demonstrates the data access pattern. Can be easily swapped with PostgreSQL in production.
 
 ### Mocked Dependencies
 - **Product Availability Client**: Returns mock responses
 - **Delivery Publisher**: Logs events instead of publishing to RabbitMQ
 
-Both can be replaced with real implementations by uncommenting the HTTP client code.
-
-### Authentication & Rate Limiting
-Handled by API Gateway (NginX) as per system design. This service assumes pre-authenticated requests.
-
 ## Testing
 
-Basic unit tests included for the order service:
+Unit tests included for the order service:
 ```bash
 npm test                 # Run tests
 npm run test:coverage    # With coverage report
