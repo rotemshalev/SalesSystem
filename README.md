@@ -90,6 +90,7 @@ Uses `Map` for data storage instead of a real database. Simple for the assignmen
 Unit tests included for the order service:
 ```bash
 npm test                 # Run tests
+npm run test:coverage    # With coverage report
 ```
 
 ## Environment Variables
