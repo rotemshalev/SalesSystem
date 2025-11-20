@@ -15,28 +15,6 @@ import { publishOrderCreated } from "./sales-delivery-publisher.service";
 import { generateOrderId } from "../utils/id-generator";
 import { logger } from "../utils/logger";
 
-const validateOrderRequest = (request: CreateOrderRequest): void => {
-  if (!request.customerId || request.customerId.trim() === "") {
-    throw new Error("Customer ID is required");
-  }
-
-  if (!request.items || request.items.length === 0) {
-    throw new Error("Order must contain at least one item");
-  }
-
-  for (const item of request.items) {
-    if (!item.productId || item.productId.trim() === "") {
-      throw new Error("Product ID is required for all items");
-    }
-    if (item.quantity <= 0) {
-      throw new Error("Quantity must be greater than 0");
-    }
-    if (item.price < 0) {
-      throw new Error("Price cannot be negative");
-    }
-  }
-};
-
 const calculateTotalAmount = (items: OrderItem[]): number => {
   return items.reduce((total, item) => total + item.price * item.quantity, 0);
 };
@@ -45,8 +23,6 @@ export const createOrder = async (
   request: CreateOrderRequest
 ): Promise<CreateOrderResponse> => {
   logger.info("Creating new order", { customerId: request.customerId });
-
-  validateOrderRequest(request);
 
   const allAvailable = await checkMultipleProductsAvailability(
     request.items.map((item) => ({
